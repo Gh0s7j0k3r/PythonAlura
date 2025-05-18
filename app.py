@@ -18,20 +18,30 @@ def exibir_opcoes():
     print('4. Sair\n')
 
 def finalizar_app():
-    os.system('cls')
+    os.system('cls') #comando valido apenas para Windows
     print('Finalizando o app...\n')
 
-def escolher_opcoes():
-    opcao_escolhida = int(input('Escolha uma opção: '))
+def opcao_invalida():
+    print('Opção inválida! Tente novamente.\n')
+    input('Digite uma tecla para voltar ao menu principal...')
+    main()
 
-    if opcao_escolhida == 1:
-        print('Cadastrar restaurante')
-    elif opcao_escolhida == 2:
-        print('Listar restaurantes')
-    elif opcao_escolhida == 3:
-        print('Ativar restaurante')
-    else:
-        finalizar_app()
+def escolher_opcoes():
+    try:
+        opcao_escolhida = int(input('Escolha uma opção: '))
+
+        if opcao_escolhida == 1:
+            print('Cadastrar restaurante')
+        elif opcao_escolhida == 2:
+            print('Listar restaurantes')
+        elif opcao_escolhida == 3:
+            print('Ativar restaurante')
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida()
 
 # Mesma lógica, mas utilizando o match-case (Python 3.10+)
 '''def escolher_opcoes():
@@ -50,6 +60,7 @@ def escolher_opcoes():
             print('Opção inválida!')'''
 
 def main():
+    os.system('cls') #comando valido apenas para Windows
     exibir_nome()
     exibir_opcoes()
     escolher_opcoes()
